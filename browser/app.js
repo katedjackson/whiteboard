@@ -9,5 +9,3 @@ whiteboard.on('draw', function (data) {
 
   socket.emit('draw', data);
 });
-
-
