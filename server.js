@@ -22,9 +22,8 @@ io.on('connection', function (socket) {
       console.log(':(');
     });
 
-    socket.on('draw', function (data) {
-
-      socket.broadcast.emit('draw', data);
+    socket.on('draw', function (start, end, strokeColor, shouldBroadcast) {
+      socket.broadcast.emit('draw', start, end, strokeColor, shouldBroadcast);
     });
 });
 

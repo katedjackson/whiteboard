@@ -4,8 +4,12 @@ socket.on('connect', function () {
     console.log('I have made a persistent two-way connection to the server!');
 });
 
-whiteboard.on('draw', function (data) {
+whiteboard.on('draw', function (start, end, strokeColor, shouldBroadcast) {
   // console.log(JSON.stringify(data));
+  console.log(arguments);
+  socket.emit('draw', start, end, strokeColor, shouldBroadcast);
+});
 
-  socket.emit('draw', data);
+socket.on('draw', function (start, end, strokeColor, shouldBroadcast) {
+  whiteboard.draw(start, end, strokeColor, shouldBroadcast);
 });
